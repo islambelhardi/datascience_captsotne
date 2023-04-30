@@ -1,8 +1,8 @@
 # Import required libraries
 import pandas as pd
 import dash
-import dash_html_components as html
-import dash_core_components as dcc
+from dash import html
+from dash import dcc
 from dash import callback
 from dash.dependencies import Input, Output
 import plotly.express as px
@@ -66,7 +66,6 @@ def update_graph(value):
         title = f"Success vs. Failed for {value}"
         dff = spacex_df[spacex_df['Launch Site'] == value]['Landing Outcome'].value_counts().reset_index(name='counts')
         fig = px.pie(dff, values='counts', names='Landing Outcome', title=title)
-
     return fig
 
 
